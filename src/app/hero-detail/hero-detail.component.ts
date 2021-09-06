@@ -26,7 +26,27 @@ export class HeroDetailComponent implements OnInit {
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.heroService.getHero(id).subscribe(hero => this.hero = hero);
+    this.heroService.getHero(id).subscribe((res) => {this.hero = res;},
+    (error) => {
+      if (error instanceof HttpErrorResponse){
+        if (error instanceof ErrorEvent){
+          console.log("error");
+        }
+        else{
+          switch(error.status){
+            case 401:
+              this.router.navigateByUrl("/error401");
+              break;
+            case 404:
+              this.router.navigateByUrl("/error404");
+              break;
+            case 500:
+              this.router.navigateByUrl("/error500");
+              break;
+          }
+        }
+      }
+    });
   }
 
   goBack(): void {

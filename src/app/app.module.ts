@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { Error401Component } from './error401/error401.component';
 import { Error404Component } from './error404/error404.component';
+import { Error500Component } from './error500/error500.component';
 
 
 
@@ -26,7 +27,8 @@ import { Error404Component } from './error404/error404.component';
     DashboardComponent,
     HeroSearchComponent,
     Error401Component,
-    Error404Component
+    Error404Component,
+    Error500Component
   ],
   imports: [
     BrowserModule,
